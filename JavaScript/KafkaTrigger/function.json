@@ -1,0 +1,13 @@
+{
+    "bindings": [
+        {
+            "type": "kafkaTrigger",
+            "name": "event",
+            "direction": "in",
+            "topic": "topic",
+            "brokerList": "localhost:9092",
+            "consumerGroup" : "$Default",
+            "dataType": "binary"
+        }
+    ]
+}

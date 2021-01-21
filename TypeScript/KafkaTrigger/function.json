@@ -1,0 +1,14 @@
+{
+    "bindings": [
+      {
+        "type": "kafkaTrigger",
+        "direction": "in",
+        "name": "event",
+        "topic": "topic",
+        "consumerGroup": "$Default",
+        "brokerList": "localhost:9092",
+        "dataType": "string"
+      }
+    ],
+    "scriptFile": "../dist/KafkaTrigger/index.js"
+  }
