@@ -18,6 +18,7 @@ docker-compose -f .\test\Microsoft.Azure.WebJobs.Extensions.Kafka.EndToEndTests\
 ## Install extension
 
 This step and `extension.csproj` file will be removed once the extension bundle has been released. host.json is also modified.
+**NOTE:** Java don't need this step.
 
 ```bash
 func extensions install
@@ -25,7 +26,8 @@ func extensions install
 
 ## Run function
 
-NOTE: TypeScript requires additional instruction. refer to [How to run the TypeScript](TypeScript/Readme.md)
+**NOTE:** TypeScript requires additional instruction. refer to [How to run the TypeScript](TypeScript/Readme.md)
+**NOTE:** Java requires different instruction. refer to [How to run the TypeScript](Java/Readme.md)
 
 ```bash
 func start
