@@ -4,10 +4,14 @@
         "type": "kafkaTrigger",
         "direction": "in",
         "name": "event",
-        "topic": "topic",
-        "consumerGroup": "$Default",
-        "brokerList": "localhost:9092",
-        "dataType": "string"
+        "brokerList" : "BrokerList",
+        "topic" : "topic",
+        "username" : "$ConnectionString",
+        "password" : "%Password%",
+        "protocol" : "SASLSSL",
+        "authenticationMode" : "PLAIN",
+        "dataType": "string",
+        "consumerGroup" : "$Default"
       }
     ],
     "scriptFile": "../dist/KafkaTrigger/index.js"

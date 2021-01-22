@@ -4,12 +4,13 @@
             "type": "kafkaTrigger",
             "name": "kafkaEvent",
             "direction": "in",
-            "dataType" : "string",
+            "brokerList" : "BrokerList",
             "topic" : "topic",
+            "username" : "$ConnectionString",
+            "password" : "%Password%",
+            "protocol" : "SASLSSL",
             "authenticationMode" : "PLAIN",
-            "cardinality" : "MANY",
-            "consumerGroup" : "$Default",
-            "brokerList" : "localhost:9092"
+            "consumerGroup" : "$Default"
         }
     ]
 }

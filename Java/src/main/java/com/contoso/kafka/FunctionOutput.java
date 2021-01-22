@@ -11,7 +11,13 @@ public class FunctionOutput {
     @FunctionName("KafkaOutput")
     public HttpResponseMessage input(
             @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @KafkaOutput(name = "kafkaOutput", topic = "topic", brokerList="localhost:9092")  OutputBinding<String> output,
+            @KafkaOutput(name = "kafkaOutput",
+                         topic = "topic", 
+                         brokerList="BrokerList",
+                         username = "$ConnectionString",
+                         password = "%Password%",
+                         authenticationMode = BrokerAuthenticationMode.PLAIN,
+                         protocol = BrokerProtocol.SASLSSL)  OutputBinding<String> output,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 

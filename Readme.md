@@ -6,14 +6,33 @@ Simple functions for Kafka Trigger and output bindings.
 
 ## Start the kafka broker 
 
-I assume you already have a docker environmnet. 
-Clone the Kafka extensions repo. It includes docker-composed
+These template created for Kafak API of EventHubs. You can customise settings according to your broker types.
+For creating Event Hub by following this [Quickstart: Create an event hub using Azure portal](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create). EventHub name should be `topic` for these examples.
 
-```bash
-git clone git@github.com:Azure/azure-functions-kafka-extension.git
-cd azure-functions-kafka-extension
-docker-compose -f .\test\Microsoft.Azure.WebJobs.Extensions.Kafka.EndToEndTests\kafka-singlenode-compose.yaml up -d
+## Configure `local.settings.json`
+
+Copy `local.settings.json.example` to `local.settings.json` and update `{YOUR_EVENT_HUBS_NAMESPACE}` and `{YOUR_EVENT_HUBS_CONNECTION_STRING}`
+
+```json
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "BrokerList": "{YOUR_EVENT_HUBS_NAMESPACE}.servicebus.windows.net:9093",
+    "Password": "{YOUR_EVENT_HUBS_CONNECTION_STRING}"
+  }
+}
 ```
+
+How EventHubs configured as a Kafka Broker.
+
+| Kafka extension config | Description | EventHubs |
+|------------- | --------------| ---------|
+| BrokerList | The URL of the brokers | {YOUR_EVENT_HUBS_NAMESPACE}.servicebus.windows.net:9093 |
+| Username | Username that is used for Kafka broker authentication | $ConnectionString (fix value) |
+| Password | Password that is used for Kafka broker authentication | Event Hubs Connection String |
+| Topic | Kafka Topic | EventHub refer to the [doc](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create#create-an-event-hub) |
 
 ## Install extension
 
@@ -41,6 +60,5 @@ Send message to `http://localhost:7071/api/KafkaOutput?message=hello`
 
 ## Clean up
 
-```bash
- docker-compose -f .\test\Microsoft.Azure.WebJobs.Extensions.Kafka.EndToEndTests\kafka-singlenode-compose.yaml down
-```
+Remove the EventHubs namespace's Resource Group.
+

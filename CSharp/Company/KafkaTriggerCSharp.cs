@@ -14,8 +14,12 @@ namespace Company.Function
         // Add LocalBroker to the local.settings.json e.g. "LocalBroker": "localhost:9092"
         [FunctionName("KafkaTrigger")]
         public static void Run(
-            [KafkaTrigger("LocalBroker",
+            [KafkaTrigger("BrokerList",
                           "topic",
+                          Username = "$ConnectionString",
+                          Password = "%Password%",
+                          Protocol = BrokerProtocol.SaslSsl,
+                          AuthenticationMode = BrokerAuthenticationMode.Plain,
                           ConsumerGroup = "$Default")] KafkaEventData<string>[] events, ILogger log)
         {
             foreach (KafkaEventData<string> eventData in events)
@@ -30,7 +34,13 @@ namespace Company.Function
         [FunctionName("KafkaOutput")]
         public static IActionResult Output(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            [Kafka("LocalBroker", "topic")] out string eventData,
+            [Kafka("BrokerList", 
+                   "topic",
+                   Username = "$ConnectionString",
+                   Password = "%Password%",
+                   Protocol = BrokerProtocol.SaslSsl,
+                   AuthenticationMode = BrokerAuthenticationMode.Plain
+            )] out string eventData,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");

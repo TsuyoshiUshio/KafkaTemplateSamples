@@ -16,7 +16,14 @@ public class TriggerFunction {
      */
     @FunctionName("KafkaTrigger")
     public void runOne(
-            @KafkaTrigger(name = "kafkaTrigger", topic = "topic", brokerList="localhost:9092",consumerGroup="$Default") String kafkaEventData,
+            @KafkaTrigger(name = "kafkaTrigger", 
+                          topic = "topic", 
+                          brokerList = "BrokerList",
+                          username = "$ConnectionString",
+                          password = "%Password%",
+                          authenticationMode = BrokerAuthenticationMode.PLAIN,
+                          protocol = BrokerProtocol.SASLSSL,
+                          consumerGroup="$Default") String kafkaEventData,
             final ExecutionContext context) {
         context.getLogger().info(kafkaEventData);
     }

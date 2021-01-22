@@ -15,8 +15,12 @@
       "type": "kafka",
       "direction": "out",
       "name": "out",
-      "topic": "topic",
-      "brokerList": "localhost:9092"
+      "brokerList" : "BrokerList",
+      "topic" : "topic",
+      "username" : "$ConnectionString",
+      "password" : "%Password%",
+      "protocol" : "SASLSSL",
+      "authenticationMode" : "PLAIN"
     },
     {
       "type": "http",
