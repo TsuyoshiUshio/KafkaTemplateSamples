@@ -1,16 +1,17 @@
 {
-      "scriptFile": "main.py",
-      "bindings": [
-        {
-          "type": "kafkaTrigger",
-          "name": "kevent",
+      "scriptFile": "main.py",
+      "bindings": [
+        {
+          "type": "kafkaTrigger",
+          "name": "kevent",
+          "direction": "in",
           "brokerList" : "BrokerList",
           "topic" : "topic",
           "username" : "$ConnectionString",
           "password" : "%Password%",
           "protocol" : "SASLSSL",
           "authenticationMode" : "PLAIN",
-          "consumerGroup" : "$Default"
-        }
+          "consumerGroup" : "$Default"
+        }
     ]
 }
