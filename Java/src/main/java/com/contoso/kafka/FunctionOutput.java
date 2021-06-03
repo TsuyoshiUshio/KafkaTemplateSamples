@@ -15,7 +15,7 @@ public class FunctionOutput {
                          topic = "topic", 
                          brokerList="BrokerList",
                          username = "$ConnectionString",
-                         password = "%Password%",
+                         password = "%EventHubsConnectionString%",
                          authenticationMode = BrokerAuthenticationMode.PLAIN,
                          protocol = BrokerProtocol.SASLSSL)  OutputBinding<String> output,
             final ExecutionContext context) {
