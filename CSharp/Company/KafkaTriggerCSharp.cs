@@ -17,7 +17,7 @@ namespace Company.Function
             [KafkaTrigger("BrokerList",
                           "topic",
                           Username = "$ConnectionString",
-                          Password = "%EventHubsConnectionString%",
+                          Password = "%KafkaPassword%",
                           Protocol = BrokerProtocol.SaslSsl,
                           AuthenticationMode = BrokerAuthenticationMode.Plain,
                           ConsumerGroup = "$Default")] KafkaEventData<string>[] events, ILogger log)

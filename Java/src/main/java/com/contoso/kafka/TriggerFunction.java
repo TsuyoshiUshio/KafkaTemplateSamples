@@ -20,7 +20,7 @@ public class TriggerFunction {
                           topic = "topic", 
                           brokerList = "BrokerList",
                           username = "$ConnectionString",
-                          password = "%EventHubsConnectionString%",
+                          password = "%KafkaPassword%",
                           authenticationMode = BrokerAuthenticationMode.PLAIN,
                           protocol = BrokerProtocol.SASLSSL,
                           consumerGroup="$Default") String kafkaEventData,

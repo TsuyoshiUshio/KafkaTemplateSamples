@@ -4,6 +4,6 @@
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "BrokerList": "{YOUR_EVENT_HUBS_NAMESPACE}.servicebus.windows.net:9093",
-    "EventHubsConnectionString": "{YOUR_EVENT_HUBS_CONNECTION_STRING}"
+    "KafkaPassword": "{YOUR_EVENT_HUBS_CONNECTION_STRING}"
   }
 }

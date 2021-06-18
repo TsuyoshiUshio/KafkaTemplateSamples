@@ -20,7 +20,7 @@ Copy `local.settings.json.example` to `local.settings.json` and update `{YOUR_EV
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
     "BrokerList": "{YOUR_EVENT_HUBS_NAMESPACE}.servicebus.windows.net:9093",
-    "Password": "{YOUR_EVENT_HUBS_CONNECTION_STRING}"
+    "KafkaPassword": "{YOUR_EVENT_HUBS_CONNECTION_STRING}"
   }
 }
 ```
